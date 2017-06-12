@@ -8,7 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage[scaled]{helvet}
-\usepackage{fullpage}
+%\usepackage{fullpage}
 
 % 	Math packages
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
@@ -64,12 +64,12 @@
 \usepackage{etoolbox} % логические операторы
 
 %%	Page
-\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage[14pt]{extsizes} % Возможность сделать 14-й шрифт
 \usepackage{geometry} % Простой способ задавать поля
-	\geometry{top=15 mm}
-	\geometry{bottom=12mm}
-	\geometry{left=6mm}
-	\geometry{right=6mm}
+	\geometry{top=20mm}
+	\geometry{bottom=20mm}
+	\geometry{left=22mm}
+	\geometry{right=22mm}
 	\geometry{bindingoffset=0mm}
 %\linespread{0.01}
 %\usepackage{mathpazo}
@@ -83,7 +83,7 @@
 % 	\lhead{}
  	% \cfoot{Нижний в центре} % По умолчанию здесь номер страницы
 \usepackage{setspace} % Интерлиньяж
-%\onehalfspacing % Интерлиньяж 1.5
+\onehalfspacing % Интерлиньяж 1.5
 %\doublespacing % Интерлиньяж 2
 %\singlespacing % Интерлиньяж 1
 %\linespread{0.01}
@@ -134,14 +134,14 @@
         Факультет общей и прикладной физики
         
         Кафедра проблем теоретической физики
-        \vspace{160pt}
+        \vspace{100pt}
         
         \textbf{\LARGE Майорановские кубиты в джохефсоновских изинговских цепочках}
         \linebreak
         
         Выпускная квалификационная работа бакалавра
      \end{center}
-     \vspace{110pt}
+     \vspace{90pt}
      
      \begin{flushright}
          \begin{tabular}{cl}
@@ -153,7 +153,7 @@
          &д.ф-м.н., проф. Махлин Ю.Г.
         \end{tabular}
     \end{flushright}
-    \vspace{170pt}
+    \vspace{60pt}
     
     \begin{center}
         Черноголовка, 2017
@@ -243,7 +243,7 @@ T_{nm} = (-i)^{2N} \gamma_1 \dotsm \gamma_n \dotsm \gamma_m \dotsm \gamma_{2N} =
     (-i)^{2N} (-1)^{m-n-1} \gamma_1 \dotsm \gamma_n \gamma_m \dotsm \gamma_{2N} \\ =
     (-i)^{2N} (-1)^{m-n} \gamma_1 \dotsm \gamma_m \gamma_n \dotsm \gamma_{2N} = 
      - (-i)^{2N} \gamma_1 \dotsm \gamma_m \dotsm \gamma_n \dotsm \gamma_{2N} = 
-     - T_{mn}.
+     T_{mn} = - T_{nm}.
 \end{multline}
 Если совершается физическое преобразование, которое в реальном пространстве меняет местами майорановские моды и сохраняет при этом чётность, то операторы (в гейзенберговском представлении) не могут просто переходить друг в друга: один из них меняет знак, чтобы сохранить чётность. Соответственно этому изменится и состояние системы.
 
@@ -307,6 +307,46 @@ T_{nm} = (-i)^{2N} \gamma_1 \dotsm \gamma_n \dotsm \gamma_m \dotsm \gamma_{2N} =
 
 \section{Спиновая система}
 
+В данной части будет кратко рассмотрено содержание \cite{main}. Будет показано, как можно совершить переход от спиновой системы к фермионной, с учётом того факта, что цепочка не является одномерной и обычное преобразование Йордана-Вигнера не даёт гамильтониана с соседним взаимодействием. Далее будет рассмотрено переплетение на спиновом языке.
+
+\subsection{Модифицированное преобразование Йордана-Вигнера}
+
+Обычное преобразование Йордана-Вигнера (здесь переводящее спиновую систему на язык майорановских фермионов),
+\begin{align}
+\gamma_{2i-1} &= \sigma^z (n) \sum\limits_{p=1}^{n-1} \sigma^x (p), & 
+\gamma_{2i} &= \sigma^y (n) \sum\limits_{p=1}^{n-1} \sigma^y (p),
+\end{align}
+превращает изинговскую цепочку с поперечным магнитным полем
+\begin{equation}
+H = - \sum\limits_{n=1}^N h(n) \sigma^x(n) - J \sum\limits_{n=1}^{N-1} \sigma^z(n) \sigma^z(n+1)
+\end{equation}
+в майорановскую цепочку с квадратичным гамильтонианом и соседним взаимодействием
+\begin{equation}
+H = -i \sum\limits_{n=1}^N h(n) \gamma(2n-1) \gamma(2n) + i J \sum\limits_{n=1}^{N-1} \gamma(2n) \gamma(2n+1).
+\end{equation}
+
+Для этого преобразования важно уметь последовательно перенумеровывать спины. В случае, когда есть три ветки (рисунок \ref{fig:t_junction}, например), невозможно перенумеровать спины таким образом, чтобы после преобразования получилась майорановская цепочка, в которой взаимодействуют только соседи. Поэтому приходится менять вид преобразования.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{spin_delta}
+        \captionsetup{width=0.9\textwidth}
+        \captionof{figure}{Нумерация спинов в спиновой системе, необходимая для проведения преобразования Йордана-Вигнера.}
+        \label{fig:spin_delta}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{spin_delta_central}
+        \captionsetup{width=0.9\textwidth}
+        \captionof{figure}{Спиновая система с центральным спином и его вкладом во взаимодействие первых спинов цепочек.}
+        \label{fig:spin_delta_central}
+    \end{subfigure}
+    \captionof{figure}{$\Delta$-соединение цепочек.}
+\end{figure}
+
+Перенумеруем спины так, как указано на рисунке \ref{fig:spin_delta_central}
 \pagebreak
 
 \bibliographystyle{unsrt}
