@@ -37,7 +37,8 @@
 \usepackage{longtable}
 \usepackage{multirow}
 \usepackage{caption}
-\usepackage{subcaption}
+%\usepackage{subcaption}
+\usepackage{subfig}
 %	Itemize
 \usepackage{enumitem}
 \setlist[itemize]{topsep=0pt, leftmargin=0.2in}
@@ -89,7 +90,7 @@
 %\linespread{0.01}
 \usepackage{lastpage} % Узнать, сколько всего страниц в документе.
 \usepackage{soul} % Модификаторы начертания
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
 \hypersetup{					% Гиперссылки
     unicode=true,           	% русские буквы в раздела PDF
@@ -277,24 +278,20 @@ T_{nm} = (-i)^{2N} \gamma_1 \dotsm \gamma_n \dotsm \gamma_m \dotsm \gamma_{2N} =
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.25\textwidth}
+    \subfloat{%
         \centering
-        \includegraphics[width=\textwidth]{braidingA}
-    \end{subfigure}%
-    \begin{subfigure}{0.25\textwidth}
+        \includegraphics[width=0.25\textwidth]{braidingA}}%
+    \subfloat{%
         \centering
         \vspace{10pt}
-        \includegraphics[width=\textwidth]{braidingB}
-    \end{subfigure}%
-    \begin{subfigure}{0.25\textwidth}
+        \includegraphics[width=0.25\textwidth]{braidingB}}%
+    \subfloat{%
         \centering
-        \includegraphics[width=\textwidth]{braidingC}
-    \end{subfigure}%
-    \begin{subfigure}{0.25\textwidth}
+        \includegraphics[width=0.25\textwidth]{braidingC}}%
+    \subfloat{%
         \centering
-        \includegraphics[width=\textwidth]{braidingD}
-    \end{subfigure}%
-    \captionof{figure}{Braiding, переплетение майорановских мод в Т-соединённых фермионных цепочках, \cite{braiding}.}
+        \includegraphics[width=0.25\textwidth]{braidingD}}%
+    \caption{Braiding, переплетение майорановских мод в Т-соединённых фермионных цепочках, \cite{braiding}.}
     \label{fig:braiding}
 \end{figure}
 
@@ -329,24 +326,21 @@ H = -i \sum\limits_{n=1}^N h(n) \gamma(2n-1) \gamma(2n) + i J \sum\limits_{n=1}^
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{spin_delta}
-        \captionsetup{width=0.9\textwidth}
-        \captionof{figure}{Нумерация спинов в спиновой системе, необходимая для проведения преобразования Йордана-Вигнера.}
-        \label{fig:spin_delta}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{spin_delta_central}
-        \captionsetup{width=0.9\textwidth}
-        \captionof{figure}{Спиновая система с центральным спином и его вкладом во взаимодействие первых спинов цепочек.}
-        \label{fig:spin_delta_central}
-    \end{subfigure}
-    \captionof{figure}{$\Delta$-соединение цепочек.}
+    \captionsetup{width=0.45\textwidth}
+    \subfloat[Нумерация спинов в спиновой системе, необходимая для проведения преобразования Йордана-Вигнера.]{
+        \centering%
+        \includegraphics[width=0.5\textwidth]{spin_delta}%
+        \label{fig:spin_delta}%
+    }%
+    \subfloat[Спиновая система с центральным спином и его вкладом во взаимодействие первых спинов цепочек.]{
+        \centering%
+        \includegraphics[width=0.5\textwidth]{spin_delta_central}%
+        \label{fig:spin_delta_central}%
+    }
+    \caption{$\Delta$-соединение цепочек.}
 \end{figure}
 
-Перенумеруем спины так, как указано на рисунке \ref{fig:spin_delta_central}
+Перенумеруем спины так, как указано на рисунке \ref{fig:spin_delta}.
 \pagebreak
 
 \bibliographystyle{unsrt}
